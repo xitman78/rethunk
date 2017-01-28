@@ -10,7 +10,8 @@ import './style.sass';
 function mapStateToProps(state) {
   return {
     works: state.works,
-    comments: state.comments
+    comments: state.comments,
+    posts: state.posts
   }
 }
 
