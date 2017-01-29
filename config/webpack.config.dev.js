@@ -156,12 +156,23 @@ module.exports = {
         loader: 'json'
       },
       // "file" loader for svg
+      // {
+      //   test: /\.svg$/,
+      //   loader: 'file',
+      //   query: {
+      //     name: 'static/media/[name].[hash:8].[ext]'
+      //   }
+      // },
+      // {
+      //   test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      //   loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+      // },
       {
-        test: /\.svg$/,
-        loader: 'file',
+        test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader',
         query: {
-          name: 'static/media/[name].[hash:8].[ext]'
-        }
+             name: 'static/fonts/[name].[ext]'
+           }
       }
     ]
   },

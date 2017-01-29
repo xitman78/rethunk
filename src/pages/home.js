@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 
 export default class Home extends Component {
 
+  componentDidMount() {
+    document.title = "React Magics";
+  }
+
   render() {
     const { comments } = this.props;
     return (

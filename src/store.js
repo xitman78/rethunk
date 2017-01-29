@@ -11,7 +11,7 @@ import rootReducer from './reducers/index'
 const defaultState = {
   works: [ {id: 1, likes: 0}, {id: 2, likes: 0}, {id: 3, likes: 0}],
   comments: [ {id: 4, count: 0}, {id: 5, count: 0}, {id: 6, count: 0}],
-  posts: [{id:7, title: 'One'}, {id:8, title: 'Two'}, {id:9, title: 'Three'}, {id:10, title: 'Four'}]
+  posts: { posts:[] }
 };
 
 const myMiddle = store => next => action => {

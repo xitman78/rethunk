@@ -1,8 +1,10 @@
-export default function posts(state = [], action) {
+export default function posts(state = {posts:[]}, action) {
 
   switch(action.type) {
+    case 'POSTS_FETCHING':
+      return {fetching: true, posts:state.posts};
     case 'POSTS_FETCHED':
-      return action.payload;
+      return {posts:action.payload};
     default:
       return state;
   }

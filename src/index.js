@@ -7,6 +7,7 @@ import App from './App';
 import Home from './pages/home'
 import Works from './pages/works'
 import About from './pages/about'
+import NotFound from './pages/404'
 import './index.sass';
 
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
         <IndexRoute component={Home}/>
         <Route path="about" component={About}/>
         <Route path="works" component={Works}/>
+        <Route path="*" component={NotFound} />
       </Route>
     </Router>
   </Provider>,

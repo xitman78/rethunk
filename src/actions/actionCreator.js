@@ -14,14 +14,18 @@ export function incrementComment(id) {
   };
 }
 
-export function fetchUsers() {
+export function fetchWorks() {
   return (dispatch) => {
 
-    const req = axios.get('https://jsonplaceholder.typicode.com/users');
+    const req = axios.get('http://react.3dtree.net/static/data/works.json');
 
     req.then(({data}) => {
-      console.log('Users ', data);
-      dispatch({ type: 'USERS_FETCHED', payload: data});
+      //console.log('Works ', res);
+      //let res = JSON.parse(data);
+      console.log('Works ', data);
+      dispatch({ type: 'WORKS_FETCHED', payload: data});
+    }).catch(err => {
+      console.error('Error fetching works', err);
     })
 
   };
@@ -30,11 +34,15 @@ export function fetchUsers() {
 export function fetchPosts() {
   return (dispatch) => {
 
+    dispatch({ type: 'POSTS_FETCHING' });
+
     const req = axios.get('https://jsonplaceholder.typicode.com/posts');
 
     req.then(({data}) => {
       console.log('Posts ', data);
-      dispatch({ type: 'POSTS_FETCHED', payload: data});
+      setTimeout(function(){
+        dispatch({ type: 'POSTS_FETCHED', payload: data});
+      }, 1000);
     })
 
   };

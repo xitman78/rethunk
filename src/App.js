@@ -6,6 +6,7 @@ import * as actionCreators from './actions/actionCreator'
 // import logo from './logo.svg';
 import './App.sass';
 import './style.sass';
+import {Icon} from 'react-fa'
 
 function mapStateToProps(state) {
   return {
@@ -24,7 +25,7 @@ class IApp extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <Link className="menu-link" to="/">Home</Link>
+          <Link className="menu-link" to="/"><Icon name="home" className="menu-icon"/>Home</Link>
           <Link className="menu-link" to="/works">Works</Link>
           <Link className="menu-link" to="/about">About</Link>
         </div>

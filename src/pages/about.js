@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-//import { Link} from 'react-router';
+import React, { Component } from 'react'
+import {Icon} from 'react-fa'
 
 export default class About extends Component {
 
@@ -9,6 +9,7 @@ export default class About extends Component {
   }
 
   componentDidMount() {
+    document.title = "About :: React Magics";
     this.props.fetchPosts();
   }
 
@@ -16,11 +17,13 @@ export default class About extends Component {
     return (
       <div>
           <h1>About</h1>
-          <button onClick={this.navigate.bind(this)}>Show props</button>
+          <button onClick={this.props.fetchPosts}>
+            { this.props.posts.fetching ? <Icon pulse name="spinner" size="lg"/> : <Icon name="refresh" size="lg"/> }
+          </button>
           <hr />
           <div className="page-container">
             <ul>
-              {this.props.posts.map(post => <div key={post.id}><h5>{post.title}</h5><p>{post.body}</p></div>)}
+              {this.props.posts.posts.map(post => <div key={post.id}><h5>{post.title}</h5><p>{post.body}</p></div>)}
             </ul>
           </div>
       </div>

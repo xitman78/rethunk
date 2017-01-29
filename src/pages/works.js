@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 class Works extends Component {
 
   componentDidMount() {
-    this.props.fetchUsers();
+    document.title = "Works :: React Magics";
+    this.props.fetchWorks();
   }
 
   // handleChange = (event) => {
@@ -22,7 +23,7 @@ class Works extends Component {
       <div>
         <h1>Works</h1>
         <hr />
-        {this.props.works.map(work => <p key={work.id}>{work.likes}</p>)}
+        {this.props.works.map(work => <p key={work.id}>{work.title}</p>)}
       </div>
     );
   }
