@@ -21,7 +21,7 @@ class Works extends Component {
   render() {
     return (
       <div>
-        <h1>Works</h1>
+        <h2 className="page-title">Works</h2>
         <hr />
         {this.props.works.map(work => <p key={work.id}>{work.title}</p>)}
       </div>

@@ -105,21 +105,21 @@ module.exports = {
       // "url" loader works like "file" loader except that it embeds assets
       // smaller than specified limit in bytes as data URLs to avoid requests.
       // A missing `test` is equivalent to a match.
-      {
-        exclude: [
-          /\.html$/,
-          /\.(js|jsx)$/,
-          /\.css$/,
-          /\.sass$/,
-          /\.json$/,
-          /\.svg$/
-        ],
-        loader: 'url',
-        query: {
-          limit: 10000,
-          name: 'static/media/[name].[hash:8].[ext]'
-        }
-      },
+      // {
+      //   exclude: [
+      //     /\.html$/,
+      //     /\.(js|jsx)$/,
+      //     /\.css$/,
+      //     /\.sass$/,
+      //     /\.json$/,
+      //     /\.svg$/
+      //   ],
+      //   loader: 'url',
+      //   query: {
+      //     limit: 10000,
+      //     name: 'static/media/[name].[hash:8].[ext]'
+      //   }
+      // },
       // Process JS with Babel.
       {
         test: /\.(js|jsx)$/,

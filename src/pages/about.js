@@ -16,7 +16,7 @@ export default class About extends Component {
   render() {
     return (
       <div>
-          <h1>About</h1>
+          <h2 className="page-title">About</h2>
           <button onClick={this.props.fetchPosts}>
             { this.props.posts.fetching ? <Icon pulse name="spinner" size="lg"/> : <Icon name="refresh" size="lg"/> }
           </button>

@@ -43,7 +43,7 @@ var env = getClientEnvironment(publicUrl);
 if (env['process.env'].NODE_ENV !== '"production"') {
   throw new Error('Production builds must have NODE_ENV=production.');
 }
-
+console.log('publicPath - ', publicPath);
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
@@ -111,21 +111,21 @@ module.exports = {
       // When you `import` an asset, you get its filename.
       // "url" loader works just like "file" loader but it also embeds
       // assets smaller than specified size as data URLs to avoid requests.
-      {
-        exclude: [
-          /\.html$/,
-          /\.(js|jsx)$/,
-          /\.css$/,
-          /\.sass$/,
-          /\.json$/,
-          /\.svg$/
-        ],
-        loader: 'url',
-        query: {
-          limit: 10000,
-          name: 'static/media/[name].[hash:8].[ext]'
-        }
-      },
+      // {
+      //   exclude: [
+      //     /\.html$/,
+      //     /\.(js|jsx)$/,
+      //     /\.css$/,
+      //     /\.sass$/,
+      //     /\.json$/,
+      //     /\.svg$/
+      //   ],
+      //   loader: 'url',
+      //   query: {
+      //     limit: 10000,
+      //     name: 'static/media/[name].[hash:8].[ext]'
+      //   }
+      // },
       // Process JS with Babel.
       {
         test: /\.(js|jsx)$/,
@@ -147,7 +147,7 @@ module.exports = {
       // in the main CSS file.
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css?importLoaders=1!postcss')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
 
@@ -155,7 +155,7 @@ module.exports = {
 
       {
         test: /\.sass$/,
-        loader: ExtractTextPlugin.extract('style', 'css?importLoaders=1!sass-loader?importLoaders=1')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader?sourceMap')
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
@@ -180,10 +180,15 @@ module.exports = {
       // },
       {
         test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader',
+        loader: 'url',
+        query: {
+          limit: 4096,
+          name: 'static/fonts/[name].[ext]'
+        }
+        /*,
         query: {
              name: 'static/fonts/[name].[ext]'
-           }
+           } */
       }
     ]
   },
@@ -259,9 +264,9 @@ module.exports = {
     })
   ],
 
-  sassLoader: {
-    includePaths: [ paths.appSrc ]
-  },
+  // sassLoader: {
+    // includePaths: [ paths.appSrc ]
+  // },
 
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

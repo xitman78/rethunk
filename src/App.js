@@ -7,6 +7,7 @@ import * as actionCreators from './actions/actionCreator'
 import './App.sass';
 import './style.sass';
 import {Icon} from 'react-fa'
+import MainHeader from './components/header'
 
 function mapStateToProps(state) {
   return {
@@ -24,6 +25,7 @@ class IApp extends Component {
   render() {
     return (
       <div className="App">
+        <MainHeader />
         <div className="App-header">
           <Link className="menu-link" to="/"><Icon name="home" className="menu-icon"/>Home</Link>
           <Link className="menu-link" to="/works">Works</Link>

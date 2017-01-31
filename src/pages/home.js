@@ -10,7 +10,7 @@ export default class Home extends Component {
     const { comments } = this.props;
     return (
       <div>
-          <h1>Home</h1>
+          <h2 className="page-title">Welcome home</h2>
           <hr />
           <ul style={{listStyleType: 'none'}}>
           {
