@@ -14,6 +14,14 @@ export function incrementComment(id) {
   };
 }
 
+export function currentWorkChanged(workId) {
+
+  return {
+    type: 'CURRENT_WORK_CHANGED',
+    id: workId,
+  };
+}
+
 export function fetchWorks() {
   return (dispatch) => {
 

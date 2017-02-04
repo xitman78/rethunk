@@ -23,10 +23,19 @@ class Works extends Component {
       <div>
         <h2 className="page-title">Works</h2>
         <hr />
-        {this.props.works.map(work => <p key={work.id}>{work.title}</p>)}
+        <select value={this.props.works.currentWork} onChange={this.handleChange.bind(this)}>
+          {this.props.works.works.map(work => <option key={work.id} value={work.id}>{work.title}</option>)}
+        </select>
       </div>
     );
   }
+
+  handleChange(event) {
+    console.log('handleChange', event);
+    this.props.currentWorkChanged(event.target.value);
+  }
+
+
 }
 
 export default Works;
