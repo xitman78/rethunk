@@ -1,50 +1,20 @@
-import axios from 'axios'
+import $http from 'axios'
 
-export function likeWork(workId) {
-  return {
-    type: 'LIKEWORK',
-    workId
-  };
-}
+import worksActions from './worksActions'
 
-export function incrementComment(id) {
+function incrementComment(id) {
   return {
     type: 'INCREMENT_COMMENT',
     id
   };
 }
 
-export function currentWorkChanged(workId) {
-
-  return {
-    type: 'CURRENT_WORK_CHANGED',
-    id: workId,
-  };
-}
-
-export function fetchWorks() {
-  return (dispatch) => {
-
-    const req = axios.get('http://react.3dtree.net/static/data/works.json');
-
-    req.then(({data}) => {
-      //console.log('Works ', res);
-      //let res = JSON.parse(data);
-      console.log('Works ', data);
-      dispatch({ type: 'WORKS_FETCHED', payload: data});
-    }).catch(err => {
-      console.error('Error fetching works', err);
-    })
-
-  };
-}
-
-export function fetchPosts() {
+function fetchPosts() {
   return (dispatch) => {
 
     dispatch({ type: 'POSTS_FETCHING' });
 
-    const req = axios.get('https://jsonplaceholder.typicode.com/posts');
+    const req = $http.get('https://jsonplaceholder.typicode.com/posts');
 
     req.then(({data}) => {
       console.log('Posts ', data);
@@ -55,3 +25,12 @@ export function fetchPosts() {
 
   };
 }
+
+const actionCreators = {
+  ...worksActions,
+  incrementComment,
+  fetchPosts,
+};
+
+
+export default actionCreators;
