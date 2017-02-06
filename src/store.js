@@ -9,13 +9,14 @@ import rootReducer from './reducers/index'
 
 
 const defaultState = {
-  works: { currentWork: 0, works: [ {id: 1, likes: 0}, {id: 2, likes: 0}, {id: 3, likes: 0}] },
+  works: { currentWork: 0, works: [] },
+  modals: { alert: { open: false } },
   comments: [ {id: 4, count: 0}, {id: 5, count: 0}, {id: 6, count: 0}],
-  posts: { posts:[] }
+  posts: { posts:[] },
 };
 
 const myMiddle = store => next => action => {
-  console.log('Action fired', action);
+  // console.log('Action fired', action);
   next(action);
 };
 

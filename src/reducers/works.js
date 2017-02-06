@@ -18,7 +18,7 @@ export default function works(state={}, action) {
         let newState = {...state};
         newState.works = action.payload
         if(!newState.works.some(w => w.id == newState.currentWork)) {
-          newState.currentWork = newState.works[0].id;
+          newState.currentWork = 0; //newState.works[0].id;
         }
         return newState;
       }

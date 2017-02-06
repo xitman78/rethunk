@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { mapDispatchToProps } from '../actions/actionCreator'
 import {Icon} from 'react-fa'
 
-export default class About extends Component {
+class About extends Component {
 
 
   navigate() {
@@ -30,3 +32,13 @@ export default class About extends Component {
     );
   }
 }
+
+
+function mapStateToProps(state) {
+  return {
+    posts: state.posts,
+  //  modals: state.modals,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(About);

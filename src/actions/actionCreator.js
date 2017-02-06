@@ -1,6 +1,8 @@
+import { bindActionCreators } from 'redux'
 import $http from 'axios'
 
 import worksActions from './worksActions'
+import modalActions from './modalsActions'
 
 function incrementComment(id) {
   return {
@@ -28,9 +30,14 @@ function fetchPosts() {
 
 const actionCreators = {
   ...worksActions,
+  ...modalActions,
   incrementComment,
   fetchPosts,
 };
 
 
 export default actionCreators;
+
+export function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch)
+}
