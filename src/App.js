@@ -15,7 +15,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 const muiTheme = getMuiTheme({
   palette: {
-    textColor: '#777777',
+    textColor: '#333333',
     primary1Color: '#e45304',
     primary2Color: '#e45304',
     primary3Color: '#e45304',

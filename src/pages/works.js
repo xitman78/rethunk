@@ -21,7 +21,7 @@ class Works extends Component {
   }
 
   fireAlert() {
-    this.props.fireAlert('This is first Material UI alert!');
+    this.props.fireAlert({message: 'This is first Material UI alert!', title: 'Hello World!', buttonText: 'Okay', modal: true});
   }
 
   render() {
@@ -63,7 +63,6 @@ class Works extends Component {
 function mapStateToProps(state) {
   return {
     works: state.works,
-    //modals: state.modals,
   }
 }
 

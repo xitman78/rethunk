@@ -6,7 +6,7 @@ export default function modals(state = {}, action) {
         ...state,
         alert: {
           open: true,
-          message: action.message
+          ...action.payload,
         } };
     case 'MODAL_ALERT_CLOSED':
       return {

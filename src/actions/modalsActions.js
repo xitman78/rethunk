@@ -1,17 +1,20 @@
 
+export function fireAlert(options) {
+  return {
+    type: 'MODAL_ALERT_FIRED',
+    payload: options
+  };
+}
+
+export function closeAlert() {
+  return {
+    type: 'MODAL_ALERT_CLOSED',
+  };
+}
+
 const modalActions  = {
-  fireAlert: function(message) {
-    return {
-      type: 'MODAL_ALERT_FIRED',
-      message
-    };
-  }
-  ,
-  closeAlert: function() {
-    return {
-      type: 'MODAL_ALERT_CLOSED',
-    };
-  }
+  fireAlert,
+  closeAlert,
 }
 
 

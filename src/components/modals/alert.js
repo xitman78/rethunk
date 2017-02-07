@@ -4,38 +4,25 @@ import { bindActionCreators } from 'redux'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
-import { mapDispatchToProps } from '../../actions/actionCreator'
+import { closeAlert } from '../../actions/modalsActions'
 
-class IModalAlert extends React.Component {
-
-  // constructor() {
-  //   super();
-  //
-  // }
-
-  componetWillMount() {
-
-  }
+class ModalAlert extends React.Component {
 
   render() {
 
-    // <RaisedButton label="Alert" onTouchTap={this.handleOpen} />
-
-    //console.log('this.props', this.props);
-
     const actions = [
       <FlatButton
-        label="Close"
-        primary={true}
+        label={this.props.modals.alert.buttonText || 'Close'}
+        secondary={true}
         onTouchTap={this.props.closeAlert}
       />
     ];
 
-
     return (
         <Dialog
           actions={actions}
-          modal={false}
+          modal={this.props.modals.alert.modal || false}
+          title={this.props.modals.alert.title}
           open={this.props.modals.alert.open}
           onRequestClose={this.props.closeAlert}>
           {this.props.modals.alert.message}
@@ -44,8 +31,4 @@ class IModalAlert extends React.Component {
   }
 }
 
-const ModalAlert = connect(state => ({modals: state.modals}), mapDispatchToProps)(IModalAlert);
-
-export default ModalAlert;
-
-// export default ModalAlert;
+export default connect(state => ({modals: state.modals}), { closeAlert })(ModalAlert);
