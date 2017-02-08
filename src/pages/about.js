@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchPosts } from '../actions/actionCreator'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
+import {List, ListItem} from 'material-ui/List';
+import Divider from 'material-ui/Divider';
 
 class About extends Component {
 
@@ -46,9 +48,13 @@ class About extends Component {
             </div>
           <hr />
           <div className="page-container">
-            <ul>
-              {this.props.posts.posts.map(post => <div key={post.id}><h5>{post.title}</h5><p>{post.body}</p></div>)}
-            </ul>
+            <List>
+              {this.props.posts.posts.map(post => <div key={post.id}><ListItem
+                  primaryText={post.title}
+                  secondaryText={post.body}
+                  secondaryTextLines={2}/><Divider inset={true} /></div>)}
+                { /*<div key={post.id}><h5>{post.title}</h5><p>{post.body}</p></div>)} */ }
+            </List>
           </div>
       </div>
     );
