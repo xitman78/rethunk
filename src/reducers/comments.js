@@ -1,12 +1,9 @@
 
 export default function comments(state=[], action) {
 
-  console.log(state, action);
-
   switch(action.type) {
 
     case 'INCREMENT_COMMENT':
-      console.log('Increment comment count', action);
       let index = state.findIndex(cm => cm.id === action.id);
       let stateCopy = state.slice();
       if(index !== -1) {

@@ -1,9 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
-import RaisedButton from 'material-ui/RaisedButton'
+// import RaisedButton from 'material-ui/RaisedButton'
 import { closeAlert } from '../../actions/modalsActions'
 
 class ModalAlert extends React.Component {

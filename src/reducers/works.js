@@ -2,8 +2,6 @@
 
 export default function works(state={}, action) {
 
-  console.log(state, action);
-
   switch(action.type) {
 
     case 'CURRENT_WORK_CHANGED':
@@ -17,7 +15,7 @@ export default function works(state={}, action) {
       {
         let newState = {...state};
         newState.works = action.payload
-        if(!newState.works.some(w => w.id == newState.currentWork)) {
+        if(!newState.works.some(w => w.id === newState.currentWork)) {
           newState.currentWork = 0; //newState.works[0].id;
         }
         return newState;

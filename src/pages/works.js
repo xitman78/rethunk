@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
-import ModalAlert from '../components/modals/alert'
-import { mapDispatchToProps } from '../actions/actionCreator'
+import { fetchWorks, currentWorkChanged } from '../actions/worksActions'
+import { fireAlert } from '../actions/modalsActions'
 import './works.sass'
 
 class Works extends Component {
@@ -15,8 +15,6 @@ class Works extends Component {
   }
 
   handleChange(event, index, value) {
-    console.log('handleChange', value);
-    //console.log('this.state', this.state);
     this.props.currentWorkChanged(value);
   }
 
@@ -26,7 +24,7 @@ class Works extends Component {
 
   render() {
 
-     const work = null; this.props.works.works.find(w => w.id == this.props.works.currentWork);
+     const work = this.props.works.works.find(w => w.id === this.props.works.currentWork);
 
     return (
       <div>
@@ -56,14 +54,10 @@ class Works extends Component {
       </div>
     );
   }
-
 }
 
 
-function mapStateToProps(state) {
-  return {
-    works: state.works,
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Works);
+export default connect(
+  state => ({ works: state.works }),
+  { fetchWorks, currentWorkChanged, fireAlert }
+)(Works);

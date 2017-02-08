@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { mapDispatchToProps } from '../actions/actionCreator'
-import {Icon} from 'react-fa'
+import { fetchPosts } from '../actions/actionCreator'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
 
 class About extends Component {
 
-
-  navigate() {
-    console.log(this.props);
-  }
-
   componentDidMount() {
     document.title = "About :: React Magics";
+    this.props.fetchPosts();
+  }
+
+  refresh() {
+    // console.log('this.props', this.props);
     this.props.fetchPosts();
   }
 
@@ -26,7 +25,7 @@ class About extends Component {
         display: 'inline-block',
         position: 'relative',
         cursor: 'pointer',
-        'background-color': 'white'
+        'backgroundColor': 'white'
       },
     };
 
@@ -40,7 +39,7 @@ class About extends Component {
                 left={0}
                 top={0}
                 loadingColor="#BB0000"
-                onClick={this.props.fetchPosts}
+                onTouchTap={this.refresh.bind(this)}
                 status={ this.props.posts.fetching ? 'loading' : 'ready' }
                 style={style.refresh}
               />
@@ -56,11 +55,7 @@ class About extends Component {
   }
 }
 
-
-function mapStateToProps(state) {
-  return {
-    posts: state.posts,
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(About);
+export default connect(
+  state => ({ posts: state.posts}),
+  { fetchPosts }
+)(About);

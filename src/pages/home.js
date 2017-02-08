@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { mapDispatchToProps } from '../actions/actionCreator'
+import { incrementComment } from '../actions/actionCreator'
 
 class Home extends Component {
 
@@ -29,11 +29,7 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    comments: state.comments,
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(
+  state => ({ comments: state.comments }),
+  { incrementComment }
+)(Home);

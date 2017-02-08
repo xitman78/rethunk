@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import actionCreators from './actions/actionCreator'
-// import logo from './logo.svg';
-import './App.sass';
-import './style.sass';
 import {Icon} from 'react-fa'
 import MainHeader from './components/header'
 import ModalAlert from './components/modals/alert'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import './App.sass'
+import './style.sass'
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -29,20 +26,7 @@ const muiTheme = getMuiTheme({
   },
 });
 
-function mapStateToProps(state) {
-  return {
-    works: state.works,
-    modals: state.modals,
-    comments: state.comments,
-    posts: state.posts,
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actionCreators, dispatch)
-}
-
-class IApp extends Component {
+class App extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
@@ -65,6 +49,4 @@ class IApp extends Component {
 
 injectTapEventPlugin();
 
-const App = connect(mapStateToProps, mapDispatchToProps)(IApp);
-
-export default App;
+export default connect(state => ({}), {})(App);
