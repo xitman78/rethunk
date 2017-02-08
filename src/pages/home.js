@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-//import { bindActionCreators } from 'redux'
 import { mapDispatchToProps } from '../actions/actionCreator'
 
 class Home extends Component {
@@ -32,10 +31,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    works: state.works,
-    modals: state.modals,
     comments: state.comments,
-    posts: state.posts,
   }
 }
 

@@ -56,7 +56,6 @@ class IApp extends Component {
             </div>
             <div>
               {this.props.children}
-              { /*React.cloneElement(this.props.children, this.props) */ }
             </div>
           </div>
       </MuiThemeProvider>

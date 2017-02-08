@@ -14,6 +14,7 @@ class ModalAlert extends React.Component {
       <FlatButton
         label={this.props.modals.alert.buttonText || 'Close'}
         secondary={true}
+        keyboardFocused={true}
         onTouchTap={this.props.closeAlert}
       />
     ];

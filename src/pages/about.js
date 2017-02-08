@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { mapDispatchToProps } from '../actions/actionCreator'
 import {Icon} from 'react-fa'
+import RefreshIndicator from 'material-ui/RefreshIndicator'
 
 class About extends Component {
 
@@ -16,12 +17,34 @@ class About extends Component {
   }
 
   render() {
+
+    const style = {
+      container: {
+        position: 'relative',
+      },
+      refresh: {
+        display: 'inline-block',
+        position: 'relative',
+        cursor: 'pointer',
+        'background-color': 'white'
+      },
+    };
+
     return (
       <div>
           <h2 className="page-title">About</h2>
-          <button onClick={this.props.fetchPosts}>
-            { this.props.posts.fetching ? <Icon pulse name="spinner" size="lg"/> : <Icon name="refresh" size="lg"/> }
-          </button>
+          <div style={style.container}>
+             <RefreshIndicator
+                percentage={100}
+                size={40}
+                left={0}
+                top={0}
+                loadingColor="#BB0000"
+                onClick={this.props.fetchPosts}
+                status={ this.props.posts.fetching ? 'loading' : 'ready' }
+                style={style.refresh}
+              />
+            </div>
           <hr />
           <div className="page-container">
             <ul>
@@ -37,7 +60,6 @@ class About extends Component {
 function mapStateToProps(state) {
   return {
     posts: state.posts,
-  //  modals: state.modals,
   }
 }
 
