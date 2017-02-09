@@ -19,6 +19,8 @@ class About extends Component {
 
   render() {
 
+    console.log('Render About');
+
     const style = {
       container: {
         position: 'relative',

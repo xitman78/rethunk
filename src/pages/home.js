@@ -9,6 +9,9 @@ class Home extends Component {
   }
 
   render() {
+
+    console.log('Render Home');
+
     const { comments } = this.props;
     return (
       <div>

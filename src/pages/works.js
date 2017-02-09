@@ -24,6 +24,8 @@ class Works extends Component {
 
   render() {
 
+    console.log('Render Works');
+
      const work = this.props.works.works.find(w => w.id === this.props.works.currentWork);
 
     return (

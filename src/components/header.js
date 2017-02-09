@@ -5,6 +5,9 @@ export default class MainHeader extends Component {
 
 
   render() {
+
+    console.log('Render Header');
+
     return (
       <h1 className="main-brand">
       3D Reactor

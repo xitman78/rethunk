@@ -9,6 +9,8 @@ class ModalAlert extends React.Component {
 
   render() {
 
+    console.log('Render Alert');
+
     const actions = [
       <FlatButton
         label={this.props.modals.alert.buttonText || 'Close'}
