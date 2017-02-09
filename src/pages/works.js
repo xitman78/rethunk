@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
 import SelectField from 'material-ui/SelectField'
@@ -8,6 +8,18 @@ import { fireAlert } from '../actions/modalsActions'
 import './works.sass'
 
 class Works extends Component {
+
+  static propTypes = {
+    works: PropTypes.shape({
+      works: PropTypes.array.isRequired,
+      currentWork: PropTypes.number.isRequired
+    }).isRequired,
+
+    fetchWorks: PropTypes.func.isRequired,
+    currentWorkChanged: PropTypes.func.isRequired,
+    fireAlert: PropTypes.func.isRequired,
+  }
+
 
   componentDidMount() {
     document.title = "Works :: React Magics";
