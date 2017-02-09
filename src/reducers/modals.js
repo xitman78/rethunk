@@ -15,6 +15,23 @@ export default function modals(state = {}, action) {
           open: false
         }
       };
+
+    case 'MODAL_SNACKBAR_FIRED':
+      return {
+        ...state,
+        snackbar: {
+          open: true,
+          ...action.payload,
+        } };
+
+    case 'MODAL_SNACKBAR_CLOSED':
+      return {
+        ...state,
+        snackbar: {
+          open: false
+        }
+      };
+
     default:
       return state;
   }

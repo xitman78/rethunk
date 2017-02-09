@@ -10,7 +10,10 @@ import rootReducer from './reducers/index'
 
 const defaultState = {
   works: { currentWork: 0, works: [] },
-  modals: { alert: { open: false } },
+  modals: {
+    alert: { open: false },
+    snackbar: { open: false },
+  },
   comments: [ {id: 4, count: 0}, {id: 5, count: 0}, {id: 6, count: 0}],
   posts: { posts:[] },
 };

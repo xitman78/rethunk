@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Icon } from 'react-fa'
 import MainHeader from './components/header'
 import ModalAlert from './components/modals/alert'
+import MySnackbar from './components/modals/snackbar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import Footer from './components/footer'
@@ -21,6 +22,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
           <div className="App">
             <ModalAlert />
+            <MySnackbar />
             <MainHeader />
             <div className="App-header">
               <Link className="menu-link" to="/"><Icon name="home" className="menu-icon"/>Home</Link>

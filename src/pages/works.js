@@ -4,7 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import { fetchWorks, currentWorkChanged } from '../actions/worksActions'
-import { fireAlert } from '../actions/modalsActions'
+import { fireAlert, fireSnackbar } from '../actions/modalsActions'
 import './works.sass'
 
 class Works extends Component {
@@ -18,6 +18,7 @@ class Works extends Component {
     fetchWorks: PropTypes.func.isRequired,
     currentWorkChanged: PropTypes.func.isRequired,
     fireAlert: PropTypes.func.isRequired,
+    fireSnackbar: PropTypes.func.isRequired,
   }
 
 
@@ -32,6 +33,10 @@ class Works extends Component {
 
   fireAlert() {
     this.props.fireAlert({message: 'This is first Material UI alert!', title: 'Hello World!', buttonText: 'Okay', modal: true});
+  }
+
+  fireSnackbar() {
+    this.props.fireSnackbar({message: 'This is first Material UI SnackBar!', duration: 5000 });
   }
 
   render() {
@@ -54,7 +59,7 @@ class Works extends Component {
           </SelectField>
          }
         <RaisedButton label="Click me" secondary={true}  onTouchTap={this.fireAlert.bind(this)}/>
-        <RaisedButton label="Submit" primary={true} />
+        <RaisedButton label="Submit" primary={true} onTouchTap={this.fireSnackbar.bind(this)} />
         <hr />
         <div>
         {
@@ -73,5 +78,5 @@ class Works extends Component {
 
 export default connect(
   state => ({ works: state.works }),
-  { fetchWorks, currentWorkChanged, fireAlert }
+  { fetchWorks, currentWorkChanged, fireAlert, fireSnackbar }
 )(Works);

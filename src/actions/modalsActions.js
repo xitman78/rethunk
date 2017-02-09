@@ -12,10 +12,15 @@ export function closeAlert() {
   };
 }
 
-const modalActions  = {
-  fireAlert,
-  closeAlert,
+export function fireSnackbar(options) {
+  return {
+    type: 'MODAL_SNACKBAR_FIRED',
+    payload: options
+  };
 }
 
-
-export default modalActions;
+export function closeSnackbar() {
+  return {
+    type: 'MODAL_SNACKBAR_CLOSED',
+  };
+}
