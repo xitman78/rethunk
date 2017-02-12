@@ -47,13 +47,12 @@ class About extends Component {
                 size={40}
                 left={0}
                 top={0}
-                loadingColor="#BB0000"
+                loadingColor="#777777"
                 onTouchTap={this.refresh.bind(this)}
                 status={ this.props.posts.fetching ? 'loading' : 'ready' }
                 style={style.refresh}
               />
-            </div>
-          <hr />
+          </div>
           <div className="page-container">
             <List>
               {this.props.posts.posts.map(post => <div key={post.id}><ListItem
@@ -61,7 +60,6 @@ class About extends Component {
                   secondaryText={post.body}
                   onTouchTap={this.showPost.bind(this, post.id)}
                   secondaryTextLines={2}/><Divider inset={true} /></div>)}
-                { /*<div key={post.id}><h5>{post.title}</h5><p>{post.body}</p></div>)} */ }
             </List>
           </div>
       </div>

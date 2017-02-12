@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link} from 'react-router';
 import { fetchPosts } from '../actions/actionCreator'
+import PostInfo from '../components/post-info'
 
 class PostDetails extends Component {
 
@@ -34,9 +35,7 @@ class PostDetails extends Component {
     return (
       <div className="child-container">
         <h2 className="page-title">Post Details</h2>
-          <p>Here is post details</p>
-          <hr />
-          { post ? JSON.stringify(post) : 'post is not loaded' }
+          <PostInfo {...post} />
       </div>
     )
   };

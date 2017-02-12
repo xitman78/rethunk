@@ -16,11 +16,10 @@ class Home extends Component {
     return (
       <div>
           <h2 className="page-title">Welcome home</h2>
-          <hr />
           <ul style={{listStyleType: 'none'}}>
           {
             comments.map(cm => { return (
-              <li key={cm.id}>{'Comment ' + cm.id + ' '}
+              <li key={cm.id} className="counter-item">{'Comment ' + cm.id + ' '}
                 <button onClick={this.props.incrementComment.bind(null, cm.id)}>+</button>
                 {' - ' + cm.count}
               </li>);

@@ -48,7 +48,7 @@ class Works extends Component {
     return (
       <div>
         <h2 className="page-title">Works</h2>
-        <hr />
+        <div>
         {   <SelectField
             className="works-selector"
             floatingLabelText="Select work"
@@ -58,10 +58,10 @@ class Works extends Component {
             {this.props.works.works.map(work => <MenuItem key={work.id} value={work.id} primaryText={work.title} />)}
           </SelectField>
          }
-        <RaisedButton label="Click me" secondary={true}  onTouchTap={this.fireAlert.bind(this)}/>
+        </div>
+        <RaisedButton label="Click me" secondary={true} onTouchTap={this.fireAlert.bind(this)} style={{marginRight: '16px'}}/>
         <RaisedButton label="Submit" primary={true} onTouchTap={this.fireSnackbar.bind(this)} />
-        <hr />
-        <div>
+        <div className="work-details">
         {
           work ? <div>
                   Work details:<br />
