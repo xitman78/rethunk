@@ -10,30 +10,27 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import Footer from './components/footer'
 import muiTheme from './MuiTheme'
 import './App.sass'
-import './style.sass'
 
 class App extends Component {
 
   render() {
 
-    // console.log('Render App');
-
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
           <div className="App">
-            <ModalAlert />
-            <MySnackbar />
-            <MainHeader />
-            <div className="App-header">
-              <Link className="menu-link" to="/"><Icon name="home" className="menu-icon"/>Home</Link>
-              <Link className="menu-link" to="/works">Works</Link>
-              <Link className="menu-link" to="/about">About</Link>
-            </div>
-            <div>
-              {this.props.children}
+            <div className="AppContent">
+              <ModalAlert />
+              <MySnackbar />
+              <MainHeader />
+              <div className="App-header">
+                <Link className="menu-link" to="/"><Icon name="home" className="menu-icon"/>Home</Link>
+                <Link className="menu-link" to="/works">Works</Link>
+                <Link className="menu-link" to="/about">About</Link>
+              </div>
+                {this.props.children}
             </div>
             <Footer />
-          </div>
+        </div>
       </MuiThemeProvider>
     );
   }

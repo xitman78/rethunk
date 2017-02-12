@@ -4,6 +4,8 @@ import FontIcon from 'material-ui/FontIcon'
 import IconLocationOn from 'material-ui/svg-icons/communication/location-on'
 import Paper from 'material-ui/Paper'
 
+import './footer.sass'
+
 const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
 const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
 const nearbyIcon = <IconLocationOn />;
@@ -15,8 +17,8 @@ export default class Footer extends Component {
     console.log('Render Footer');
 
     return (
-      <Paper zDepth={1}>
-        <BottomNavigation selectedIndex={1} style={{backgroundColor: '#CCCCCC'}}>
+      <Paper className="AppFooter">
+        <BottomNavigation selectedIndex={1} style={{'minHeight': '200px'}}>
           <BottomNavigationItem
             label="Recents"
             icon={recentsIcon}

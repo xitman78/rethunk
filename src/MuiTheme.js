@@ -1,6 +1,7 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
 
-const muiTheme = getMuiTheme({
+const muiTheme = getMuiTheme(darkBaseTheme/*{
   palette: {
     textColor: '#333333',
     primary1Color: '#e45304',
@@ -14,6 +15,6 @@ const muiTheme = getMuiTheme({
   appBar: {
     height: 50,
   },
-});
+}*/);
 
 export default muiTheme;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
 import { fetchPosts } from '../actions/actionCreator'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
 import {List, ListItem} from 'material-ui/List';
@@ -15,6 +16,10 @@ class About extends Component {
   refresh() {
     // console.log('this.props', this.props);
     this.props.fetchPosts();
+  }
+
+  showPost(postId) {
+    browserHistory.push('/post/' + postId);
   }
 
   render() {
@@ -54,6 +59,7 @@ class About extends Component {
               {this.props.posts.posts.map(post => <div key={post.id}><ListItem
                   primaryText={post.title}
                   secondaryText={post.body}
+                  onTouchTap={this.showPost.bind(this, post.id)}
                   secondaryTextLines={2}/><Divider inset={true} /></div>)}
                 { /*<div key={post.id}><h5>{post.title}</h5><p>{post.body}</p></div>)} */ }
             </List>
