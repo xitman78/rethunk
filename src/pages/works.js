@@ -4,7 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import { fetchWorks, currentWorkChanged } from '../actions/worksActions'
-import { fireAlert, fireSnackbar } from '../actions/modalsActions'
+import { fireAlert, fireSnackbar, closeAlert } from '../actions/modalsActions'
 import './works.sass'
 
 class Works extends Component {
@@ -32,7 +32,9 @@ class Works extends Component {
   }
 
   fireAlert() {
-    this.props.fireAlert({message: 'This is first Material UI alert!', title: 'Hello World!', buttonText: 'Okay', modal: true});
+    const myAction = [ <button onClick={this.props.closeAlert}>Hello</button> ];
+
+    this.props.fireAlert({message: 'This is first Material UI alert!', title: 'Hello World!', buttonText: 'Okay', modal: true, actions: myAction});
   }
 
   fireSnackbar() {
@@ -43,7 +45,7 @@ class Works extends Component {
 
     console.log('Render Works');
 
-     const work = this.props.works.works.find(w => w.id === this.props.works.currentWork);
+    const work = this.props.works.works.find(w => w.id === this.props.works.currentWork);
 
     return (
       <div>
@@ -78,5 +80,5 @@ class Works extends Component {
 
 export default connect(
   state => ({ works: state.works }),
-  { fetchWorks, currentWorkChanged, fireAlert, fireSnackbar }
+  { fetchWorks, currentWorkChanged, fireAlert, fireSnackbar, closeAlert }
 )(Works);

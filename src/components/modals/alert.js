@@ -22,7 +22,7 @@ class ModalAlert extends React.Component {
 
     return (
         <Dialog
-          actions={actions}
+          actions={this.props.alert.actions || actions}
           modal={this.props.alert.modal || false}
           title={this.props.alert.title}
           open={this.props.alert.open}
