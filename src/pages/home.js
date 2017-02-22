@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { incrementComment } from '../actions/actionCreator'
+import DraggedField from '../components/dragged-field'
 
 class Home extends Component {
 
@@ -26,6 +27,8 @@ class Home extends Component {
             })
           }
           </ul>
+          <hr />
+          <DraggedField />
       </div>
     );
   }
