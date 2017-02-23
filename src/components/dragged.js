@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link} from 'react-router'
+import { fireAlert, fireSnackbar, closeAlert } from '../actions/modalsActions'
+import { draggedMoved } from '../actions/actionCreator'
 import './dragged.sass'
 
 class Dragged extends Component {
 
   componentWillMount() {
-    this.setState({x: 50, y: 50});
+    this.setState({x: this.props.dragged.x, y: this.props.dragged. y});
   }
 
   startDragging(event) {
@@ -34,9 +38,13 @@ class Dragged extends Component {
      if(this.state.dragStarted) {
        let offsetX = this.state.lastX - ev.pageX;
        let offsetY = this.state.lastY - ev.pageY;
-       this.setState({dragStarted: false, x: (this.state.x - offsetX), y: (this.state.y - offsetY) });
+       let x = (this.state.x - offsetX);
+       let y = (this.state.y - offsetY);
+       this.setState({dragStarted: false, x , y });
        window.removeEventListener('mousemove', moveHandler);
        window.removeEventListener('mouseup', upHandler);
+       this.props.fireSnackbar({message: 'Possition changed!'});
+       this.props.draggedMoved(x, y);
      }
    };
 
@@ -55,4 +63,9 @@ class Dragged extends Component {
 
 }
 
-export default Dragged;
+// export default Dragged;
+
+export default connect(
+  state => ({ dragged: state.dragged }),
+  { fireAlert, fireSnackbar, closeAlert, draggedMoved }
+)(Dragged);

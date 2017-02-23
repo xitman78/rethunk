@@ -5,6 +5,7 @@ import works from './works'
 import comments from './comments'
 import posts from './posts'
 import modals from './modals'
+import dragged from './dragged'
 
 const rootReducer = combineReducers(
   {
@@ -13,6 +14,7 @@ const rootReducer = combineReducers(
     comments: comments,
     posts: posts,
     routing: routerReducer,
+    dragged: dragged,
   }
 );
 

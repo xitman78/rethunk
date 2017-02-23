@@ -22,3 +22,10 @@ export function fetchPosts() {
 
   };
 }
+
+export function draggedMoved(x, y) {
+  return {
+    type: 'DRAGGED_POSITION_CHANGED',
+    payload: {x, y}
+  };
+}
