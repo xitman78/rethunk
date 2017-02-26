@@ -20,6 +20,14 @@ export default function works(state={}, action) {
         }
         return newState;
       }
+
+    case 'WORKS_SWAP_CHILD':
+    {
+      let newSwapper = { left: state.swapper.right, right: state.swapper.left };
+
+      return {...state, swapper: newSwapper };
+    }
+
     default:
       return state;
   }

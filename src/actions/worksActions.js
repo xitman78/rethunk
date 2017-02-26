@@ -24,9 +24,16 @@ export function fetchWorks() {
   };
 }
 
+export function swapChild() {
+  return {
+    type: 'WORKS_SWAP_CHILD',
+  };
+}
+
 const worksActions = {
   currentWorkChanged,
-  fetchWorks
+  fetchWorks,
+  swapChild
 }
 
 export default worksActions;

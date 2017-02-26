@@ -1,7 +1,9 @@
+import React from 'react'
 import { createStore, compose, applyMiddleware } from 'redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { browserHistory } from 'react-router'
 import thunk from 'redux-thunk'
+import Swapped from './components/swapped'
 
 // import root reducers
 
@@ -9,7 +11,14 @@ import rootReducer from './reducers/index'
 
 
 const defaultState = {
-  works: { currentWork: 0, works: [] },
+  works: {
+    currentWork: 0,
+    works: [],
+    swapper: {
+      left: <Swapped />,
+      right: null
+    }
+  },
   modals: {
     alert: { open: false },
     snackbar: { open: false },

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
-import { fetchWorks, currentWorkChanged } from '../actions/worksActions'
+import { fetchWorks, currentWorkChanged, swapChild } from '../actions/worksActions'
 import { fireAlert, fireSnackbar, closeAlert } from '../actions/modalsActions'
 import './works.sass'
 
@@ -32,9 +32,9 @@ class Works extends Component {
   }
 
   fireAlert() {
-    const myAction = [ <button onClick={this.props.closeAlert}>Hello</button> ];
+    // const myAction = [ <button onClick={this.props.closeAlert}>Hello</button> ];
 
-    this.props.fireAlert({message: 'This is first Material UI alert!', title: 'Hello World!', buttonText: 'Okay', modal: true, actions: myAction});
+    this.props.fireAlert({message: 'This is first Material UI alert!', title: 'Hello World!', buttonText: 'Okay', modal: true});
   }
 
   fireSnackbar() {
@@ -62,7 +62,12 @@ class Works extends Component {
          }
         </div>
         <RaisedButton label="Click me" secondary={true} onTouchTap={this.fireAlert.bind(this)} style={{marginRight: '16px'}}/>
-        <RaisedButton label="Submit" primary={true} onTouchTap={this.fireSnackbar.bind(this)} />
+        <RaisedButton label="Submit" primary={true} onTouchTap={this.fireSnackbar.bind(this)} style={{marginRight: '16px'}}/>
+        <RaisedButton label="Swap" onTouchTap={this.props.swapChild} />
+        <div className="swapper-container">
+          <div className="drop-container">{this.props.works.swapper.left}</div>
+          <div className="drop-container">{this.props.works.swapper.right}</div>
+        </div>
         <div className="work-details">
         {
           work ? <div>
@@ -80,5 +85,5 @@ class Works extends Component {
 
 export default connect(
   state => ({ works: state.works }),
-  { fetchWorks, currentWorkChanged, fireAlert, fireSnackbar, closeAlert }
+  { fetchWorks, currentWorkChanged, fireAlert, fireSnackbar, closeAlert, swapChild }
 )(Works);

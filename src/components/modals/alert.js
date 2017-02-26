@@ -33,4 +33,7 @@ class ModalAlert extends React.Component {
   }
 }
 
-export default connect(state => ({alert: state.modals.alert}), { closeAlert })(ModalAlert);
+export default connect(
+   state => ({alert: state.modals.alert}),
+   { closeAlert }
+ )(ModalAlert);
