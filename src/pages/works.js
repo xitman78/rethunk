@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
-import { fetchWorks, currentWorkChanged, swapChild } from '../actions/worksActions'
+import { fetchWorks, currentWorkChanged, swapChild, swappedDrop } from '../actions/worksActions'
 import { fireAlert, fireSnackbar, closeAlert } from '../actions/modalsActions'
 import './works.sass'
 
@@ -41,6 +41,15 @@ class Works extends Component {
     this.props.fireSnackbar({message: 'This is first Material UI SnackBar!', duration: 5000 });
   }
 
+  allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+  drop(target, ev) {
+    ev.preventDefault();
+    this.props.swappedDrop(target);
+}
+
   render() {
 
     console.log('Render Works');
@@ -65,8 +74,12 @@ class Works extends Component {
         <RaisedButton label="Submit" primary={true} onTouchTap={this.fireSnackbar.bind(this)} style={{marginRight: '16px'}}/>
         <RaisedButton label="Swap" onTouchTap={this.props.swapChild} />
         <div className="swapper-container">
-          <div className="drop-container">{this.props.works.swapper.left}</div>
-          <div className="drop-container">{this.props.works.swapper.right}</div>
+          <div className="drop-container" onDragOver={this.allowDrop} onDrop={this.drop.bind(this, 'left')}>
+            {this.props.works.swapper.left ? React.cloneElement(this.props.works.swapper.left, { pos: 'left' }) : null}
+          </div>
+          <div className="drop-container" onDragOver={this.allowDrop} onDrop={this.drop.bind(this, 'right')}>
+            {this.props.works.swapper.right ? React.cloneElement(this.props.works.swapper.right, { pos: 'right' }) : null}
+          </div>
         </div>
         <div className="work-details">
         {
@@ -85,5 +98,5 @@ class Works extends Component {
 
 export default connect(
   state => ({ works: state.works }),
-  { fetchWorks, currentWorkChanged, fireAlert, fireSnackbar, closeAlert, swapChild }
+  { fetchWorks, currentWorkChanged, fireAlert, fireSnackbar, closeAlert, swapChild, swappedDrop }
 )(Works);

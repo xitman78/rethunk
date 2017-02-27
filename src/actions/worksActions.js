@@ -30,6 +30,20 @@ export function swapChild() {
   };
 }
 
+export function swapDrag(sourse) {
+  return {
+    type: 'WORKS_SWAP_DRAG_STARTED',
+    sourse,
+  };
+}
+
+export function swappedDrop(target) {
+  return {
+    type: 'WORKS_SWAPPED_DROP',
+    target
+  };
+}
+
 const worksActions = {
   currentWorkChanged,
   fetchWorks,
