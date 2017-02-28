@@ -5,6 +5,7 @@ import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import { fetchWorks, currentWorkChanged, swapChild, swappedDrop } from '../actions/worksActions'
 import { fireAlert, fireSnackbar, closeAlert } from '../actions/modalsActions'
+import DropContainer from '../components/drop-container'
 import './works.sass'
 
 class Works extends Component {
@@ -41,17 +42,6 @@ class Works extends Component {
     this.props.fireSnackbar({message: 'This is first Material UI SnackBar!', duration: 5000 });
   }
 
-  allowDrop(ev) {
-    ev.preventDefault();
-    ev.dataTransfer.dropEffect = "copy"
-  }
-
-  drop(target, ev) {
-    console.log('Drop ' + target);
-    ev.preventDefault();
-    this.props.swappedDrop(target);
-  }
-
   render() {
 
     console.log('Render Works');
@@ -76,12 +66,10 @@ class Works extends Component {
         <RaisedButton label="Submit" primary={true} onTouchTap={this.fireSnackbar.bind(this)} style={{marginRight: '16px'}}/>
         <RaisedButton label="Swap" onTouchTap={this.props.swapChild} />
         <div className="swapper-container">
-          <div className="drop-container" onDragOver={this.allowDrop} onDrop={this.drop.bind(this, 'left')}>
-            {this.props.works.swapper.left ? React.cloneElement(this.props.works.swapper.left, { pos: 'left' }) : null}
-          </div>
-          <div className="drop-container" onDragOver={this.allowDrop} onDrop={this.drop.bind(this, 'right')}>
-            {this.props.works.swapper.right ? React.cloneElement(this.props.works.swapper.right, { pos: 'right' }) : null}
-          </div>
+          <DropContainer dropId="left" />
+          <DropContainer dropId="right" />
+          <DropContainer dropId="down" />
+          <DropContainer dropId="four" />
         </div>
         <div className="work-details">
         {

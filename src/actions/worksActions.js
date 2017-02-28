@@ -30,16 +30,10 @@ export function swapChild() {
   };
 }
 
-export function swapDrag(sourse) {
-  return {
-    type: 'WORKS_SWAP_DRAG_STARTED',
-    sourse,
-  };
-}
-
-export function swappedDrop(target) {
+export function swappedDrop(sourse, target) {
   return {
     type: 'WORKS_SWAPPED_DROP',
+    sourse,
     target
   };
 }

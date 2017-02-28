@@ -1,29 +1,15 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component, PropTypes } from 'react'
 import Chip from 'material-ui/Chip'
 import Avatar from 'material-ui/Avatar'
-import { fireAlert, fireSnackbar, closeAlert } from '../actions/modalsActions'
-import { swapDrag } from '../actions/worksActions'
 import './swapped.sass'
 
 class Swapped extends Component {
 
-  // constructor() {
-  //   super();
-  //   console.log('constructor');
-  // }
-  //
-  // componentWillMount() {
-  //   console.log('componentWillMount');
-  // }
-  //
-  // componentWillUnmount() {
-  //   console.log('componentWillUnmount');
-  // }
+  static propTypes = {
+    pos: PropTypes.string.isRequired,
+  }
 
   draggStart(event) {
-    console.log('draggStart', event);
-    this.props.swapDrag(this.props.pos);
     event.dataTransfer.setData('text', this.props.pos);
   }
 
@@ -39,7 +25,4 @@ class Swapped extends Component {
 }
 
 
-export default connect(
-  state => ({ }),
-  { fireAlert, fireSnackbar, swapDrag }
-)(Swapped);
+export default Swapped;
