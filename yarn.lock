@@ -1005,6 +1005,10 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
+bounce.js@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/bounce.js/-/bounce.js-0.8.2.tgz#3e9ebce253e72b42f4178b5c81db48538d674a83"
+
 bowser@^1.0.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/bowser/-/bowser-1.6.0.tgz#37fc387b616cb6aef370dab4d6bd402b74c5c54d"

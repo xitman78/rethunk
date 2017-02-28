@@ -3,11 +3,24 @@ import { connect } from 'react-redux'
 import { incrementComment } from '../actions/actionCreator'
 import DraggedField from '../components/dragged-field'
 import './home.sass'
+import Bounce from 'bounce.js'
+
+let bounce = new Bounce();
+bounce.rotate({
+  from: 0,
+  to: 90
+});
 
 class Home extends Component {
 
   componentDidMount() {
     document.title = "React Magics";
+  }
+
+  startBounce(ev) {
+
+    bounce.applyTo(ev.target);
+
   }
 
   render() {
@@ -18,6 +31,7 @@ class Home extends Component {
     return (
       <div>
           <h2 className="page-title">Welcome home</h2>
+
           <ul style={{listStyleType: 'none'}}>
           {
             comments.map(cm => { return (
@@ -29,6 +43,7 @@ class Home extends Component {
           }
           </ul>
           <div className="dragged-field-container">
+            <div className="bouncer" id="bouncer" onClick={this.startBounce}></div>
             <DraggedField />
           </div>
       </div>
