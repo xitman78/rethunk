@@ -43,7 +43,7 @@ class Works extends Component {
 
   allowDrop(ev) {
     ev.preventDefault();
-    ev.dataTransfer.dropEffect = "move"
+    ev.dataTransfer.dropEffect = "copy"
   }
 
   drop(target, ev) {
