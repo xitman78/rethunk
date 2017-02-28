@@ -43,12 +43,14 @@ class Works extends Component {
 
   allowDrop(ev) {
     ev.preventDefault();
+    ev.dataTransfer.dropEffect = "move"
   }
 
   drop(target, ev) {
+    console.log('Drop ' + target);
     ev.preventDefault();
     this.props.swappedDrop(target);
-}
+  }
 
   render() {
 

@@ -24,6 +24,7 @@ class Swapped extends Component {
   draggStart(event) {
     console.log('draggStart', event);
     this.props.swapDrag(this.props.pos);
+    event.dataTransfer.setData('text', this.props.pos);
   }
 
   render() {
