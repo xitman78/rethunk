@@ -52,7 +52,7 @@ class Works extends Component {
       <div>
         <h2 className="page-title">Works</h2>
         <div>
-        {   <SelectField
+          <SelectField
             className="works-selector"
             floatingLabelText="Select work"
             value={this.props.works.currentWork}
@@ -60,7 +60,6 @@ class Works extends Component {
             <MenuItem value={0} primaryText="none" />
             {this.props.works.works.map(work => <MenuItem key={work.id} value={work.id} primaryText={work.title} />)}
           </SelectField>
-         }
         </div>
         <RaisedButton label="Click me" secondary={true} onTouchTap={this.fireAlert.bind(this)} style={{marginRight: '16px'}}/>
         <RaisedButton label="Submit" primary={true} onTouchTap={this.fireSnackbar.bind(this)} style={{marginRight: '16px'}}/>

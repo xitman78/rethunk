@@ -7,6 +7,13 @@ export function incrementComment(id) {
   };
 }
 
+export function selectBounce(bounce) {
+  return {
+    type: 'BOUNCE_SELECTED',
+    bounce
+  }
+}
+
 export function fetchPosts() {
   return (dispatch) => {
 

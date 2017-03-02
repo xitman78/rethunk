@@ -21,7 +21,14 @@ const defaultState = {
     alert: { open: false },
     snackbar: { open: false },
   },
-  comments: [ {id: 4, count: 0}, {id: 5, count: 0}, {id: 6, count: 0}],
+  comments: {
+    bounce: 'jelly',
+      comments: [
+        {id: 4, count: 0},
+        {id: 5, count: 0},
+        {id: 6, count: 0} 
+      ],
+  },
   posts: { posts:[] },
   dragged: { x: 50, y: 50}
 };

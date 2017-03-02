@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { incrementComment } from '../actions/actionCreator'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
+import { incrementComment, selectBounce } from '../actions/actionCreator'
 import DraggedField from '../components/dragged-field'
+import bounce from '../animations/bounce'
 import './home.sass'
-import Bounce from 'bounce.js'
 
-let bounce = new Bounce();
-bounce.rotate({
-  from: 0,
-  to: 90
-});
 
 class Home extends Component {
 
@@ -19,18 +16,32 @@ class Home extends Component {
 
   startBounce(ev) {
 
-    bounce.applyTo(ev.target);
+    let target = ev.target;
 
+    bounce[this.props.comments.bounce].applyTo(target);
+
+  }
+
+  bounceChange(event, index, value) {
+    this.props.selectBounce(value);
   }
 
   render() {
 
     console.log('Render Home');
 
-    const { comments } = this.props;
+    const { comments } = this.props.comments;
     return (
       <div>
           <h2 className="page-title">Welcome home</h2>
+
+          <SelectField
+            className="works-selector"
+            floatingLabelText="Bounce preset"
+            value={this.props.comments.bounce}
+            onChange={this.bounceChange.bind(this)}>
+            {Object.keys(bounce).map(preset => <MenuItem key={preset} value={preset} primaryText={bounce[preset].title} />)}
+          </SelectField>
 
           <ul style={{listStyleType: 'none'}}>
           {
@@ -43,7 +54,7 @@ class Home extends Component {
           }
           </ul>
           <div className="dragged-field-container">
-            <div className="bouncer" id="bouncer" onClick={this.startBounce}></div>
+            <div className="bouncer" id="bouncer" onClick={this.startBounce.bind(this)}></div>
             <DraggedField />
           </div>
       </div>
@@ -53,5 +64,5 @@ class Home extends Component {
 
 export default connect(
   state => ({ comments: state.comments }),
-  { incrementComment }
+  { incrementComment, selectBounce }
 )(Home);
