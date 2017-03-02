@@ -24,8 +24,9 @@ class App extends Component {
               <MainHeader />
               <div className="App-header">
                 <Link className="menu-link" to="/"><Icon name="home" className="menu-icon"/>Home</Link>
+                <Link className="menu-link" to="/bounce">Bounce</Link>
                 <Link className="menu-link" to="/works">Works</Link>
-                <Link className="menu-link" to="/about">About</Link>
+                <Link className="menu-link" to="/posts">Blog</Link>
               </div>
                 {this.props.children}
             </div>

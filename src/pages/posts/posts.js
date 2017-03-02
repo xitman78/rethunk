@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { browserHistory } from 'react-router'
-import { fetchPosts } from '../actions/actionCreator'
+import { browserHistory, Link } from 'react-router'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
-import {List, ListItem} from 'material-ui/List';
-import Divider from 'material-ui/Divider';
+import {List, ListItem} from 'material-ui/List'
+import Divider from 'material-ui/Divider'
+import { fetchPosts } from '../../actions/actionCreator'
 
-class About extends Component {
+class Posts extends Component {
 
   componentDidMount() {
-    document.title = "About :: React Magics";
+    document.title = "Posts :: React Magics";
     this.props.fetchPosts();
   }
 
@@ -40,7 +40,8 @@ class About extends Component {
 
     return (
       <div>
-          <h2 className="page-title">About</h2>
+          <h2 className="page-title">Blog</h2>
+          <p style={{color: 'white'}}>These posts are fetched from <a href="https://jsonplaceholder.typicode.com" target="_blank">https://jsonplaceholder.typicode.com</a></p>
           <div style={style.container}>
              <RefreshIndicator
                 percentage={100}
@@ -70,4 +71,4 @@ class About extends Component {
 export default connect(
   state => ({ posts: state.posts}),
   { fetchPosts }
-)(About);
+)(Posts);

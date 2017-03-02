@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link} from 'react-router';
-import { fetchPosts } from '../actions/actionCreator'
-import PostInfo from '../components/post-info'
+import { fetchPosts } from '../../../actions/actionCreator'
+import PostInfo from '../../../components/post-info'
 
 class PostDetails extends Component {
 
@@ -12,20 +12,10 @@ class PostDetails extends Component {
     let postId = this.props.params.id;
     let post = this.props.posts.posts.find(p => p.id == postId);
 
-    // this.post = post;
-
     if(!post) this.props.fetchPosts();
 
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //
-  //   let postId = nextProps.params.id;
-  //   let post = nextProps.posts.posts.find(p => p.id == postId);
-  //
-  //   this.post = post;
-  //
-  // }
 
   render() {
 
