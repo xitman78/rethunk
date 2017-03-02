@@ -133,10 +133,33 @@ splat.translate({
   stiffness: 3
 });
 
+let spin = new Bounce();
+
+spin.title = "Spin";
+
+spin.rotate({
+  from: 0,
+  to: 90,
+  easing: 'bounce',
+  duration: 1000,
+  delay: 0,
+  bounces: 4,
+  stiffness: 3
+}).skew({
+  from: { x: 0, y: 0 },
+  to: { x: 20, y: 20 },
+  easing: 'sway',
+  duration: 1000,
+  delay: 0,
+  bounces: 4,
+  stiffness: 3
+})
+
 export default {
   foldUnfold,
   jelly,
   smack,
   splat,
+  spin,
   swoosh,
 };
