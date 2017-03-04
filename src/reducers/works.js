@@ -1,22 +1,27 @@
+import { fromJS } from 'immutable'
 
+const initialState = fromJS({
+  currentWork: 0,
+  works: [],
+  swapper: {
+    left: true,
+  }
+});
 
-export default function works(state={}, action) {
+export default function works(state = initialState, action) {
 
   switch(action.type) {
 
     case 'CURRENT_WORK_CHANGED':
-      {
-        let newState = {...state};
-        newState.currentWork = action.id;
-        return newState;
-      }
+        return state.set('currentWork', action.id);
 
     case 'WORKS_FETCHED':
       {
-        let newState = {...state};
-        newState.works = action.payload
-        if(!newState.works.some(w => w.id === newState.currentWork)) {
-          newState.currentWork = 0; //newState.works[0].id;
+        // console.log('WORKS_FETCHED');
+        let newState = state.set('works', action.payload);
+        let currentWork = state.get('currentWork');
+        if(!action.payload.some(w => w.id === currentWork)) {
+          newState = newState.set('currentWork', 0); //newState.works[0].id;
         }
         return newState;
       }

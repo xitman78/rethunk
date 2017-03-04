@@ -10,17 +10,17 @@ import './works.sass'
 
 class Works extends Component {
 
-  static propTypes = {
-    works: PropTypes.shape({
-      works: PropTypes.array.isRequired,
-      currentWork: PropTypes.number.isRequired
-    }).isRequired,
-
-    fetchWorks: PropTypes.func.isRequired,
-    currentWorkChanged: PropTypes.func.isRequired,
-    fireAlert: PropTypes.func.isRequired,
-    fireSnackbar: PropTypes.func.isRequired,
-  }
+  // static propTypes = {
+  //   works: PropTypes.shape({
+  //     works: PropTypes.array.isRequired,
+  //     currentWork: PropTypes.number.isRequired
+  //   }).isRequired,
+  //
+  //   fetchWorks: PropTypes.func.isRequired,
+  //   currentWorkChanged: PropTypes.func.isRequired,
+  //   fireAlert: PropTypes.func.isRequired,
+  //   fireSnackbar: PropTypes.func.isRequired,
+  // }
 
 
   componentDidMount() {
@@ -46,7 +46,10 @@ class Works extends Component {
 
     console.log('Render Works');
 
-    const work = this.props.works.works.find(w => w.id === this.props.works.currentWork);
+    const worksList = this.props.works.get('works');
+    const currentWork = this.props.works.get('currentWork');
+
+    const work = worksList.find(w => w.id === currentWork);
 
     return (
       <div>
@@ -55,20 +58,20 @@ class Works extends Component {
           <SelectField
             className="works-selector"
             floatingLabelText="Select work"
-            value={this.props.works.currentWork}
+            value={currentWork}
             onChange={this.handleChange.bind(this)}>
             <MenuItem value={0} primaryText="none" />
-            {this.props.works.works.map(work => <MenuItem key={work.id} value={work.id} primaryText={work.title} />)}
+            {worksList.map(w => <MenuItem key={w.id} value={w.id} primaryText={w.title} />)}
           </SelectField>
         </div>
         <RaisedButton label="Click me" secondary={true} onTouchTap={this.fireAlert.bind(this)} style={{marginRight: '16px'}}/>
         <RaisedButton label="Submit" primary={true} onTouchTap={this.fireSnackbar.bind(this)} style={{marginRight: '16px'}}/>
         <RaisedButton label="Swap" onTouchTap={this.props.swapChild} />
         <div className="swapper-container">
-          <DropContainer dropId="left" />
+          { /*<DropContainer dropId="left" />
           <DropContainer dropId="right" />
           <DropContainer dropId="down" />
-          <DropContainer dropId="four" />
+          <DropContainer dropId="four" />*/ }
         </div>
         <div className="work-details">
         {
@@ -86,6 +89,6 @@ class Works extends Component {
 
 
 export default connect(
-  state => ({ works: state.works }),
+  state => ({ works: state.get('works') }),
   { fetchWorks, currentWorkChanged, fireAlert, fireSnackbar, closeAlert, swapChild, swappedDrop }
 )(Works);

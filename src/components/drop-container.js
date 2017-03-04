@@ -37,6 +37,6 @@ class DropContainer extends Component {
 
 
 export default connect(
-  state => ({ works: state.works }),
+  state => ({ works: state.get('works') }),
   { swappedDrop }
 )(DropContainer);
