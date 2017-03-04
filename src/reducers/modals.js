@@ -1,39 +1,41 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable'
+import { fromJS } from 'immutable'
 
-function alert(state = {}, action) {
+let alertInitialState = fromJS({
+   open: false
+});
+
+function alert(state = alertInitialState, action) {
 
   switch(action.type) {
 
     case 'MODAL_ALERT_FIRED':
-      return {
-          open: true,
-          ...action.payload,
-        };
+      console.log('MODAL_ALERT_FIRED', state);
+      return state.set('open', true).merge(action.payload);
+
     case 'MODAL_ALERT_CLOSED':
-      return {
-          open: false
-      };
+      console.log('MODAL_ALERT_FIRED', state);
+      return state.set('open', false);
 
     default:
       return state;
-      
+
   }
 }
 
-function snackbar(state = {}, action) {
+let snackbarInitialState = fromJS({
+   open: false
+});
+
+function snackbar(state = snackbarInitialState, action) {
 
   switch(action.type) {
 
   case 'MODAL_SNACKBAR_FIRED':
-    return {
-        open: true,
-        ...action.payload,
-      };
+    return state.set('open', true).merge(action.payload);
 
   case 'MODAL_SNACKBAR_CLOSED':
-    return {
-        open: false
-    };
+    return state.set('open', false);
 
   default:
     return state;

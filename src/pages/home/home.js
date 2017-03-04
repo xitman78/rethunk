@@ -15,7 +15,7 @@ class Home extends Component {
 
     console.log('Render Home');
 
-    const { comments } = this.props.comments;
+    const comments = this.props.comments.get('comments').toJS();
     return (
       <div>
           <h2 className="page-title">Welcome home</h2>
@@ -39,6 +39,6 @@ class Home extends Component {
 }
 
 export default connect(
-  state => ({ comments: state.comments }),
+  state => ({ comments: state.get('comments') }),
   { incrementComment }
 )(Home);

@@ -13,7 +13,7 @@ class ModalAlert extends React.Component {
 
     const actions = [
       <FlatButton
-        label={this.props.alert.buttonText || 'Close'}
+        label={this.props.alert.get('buttonText') || 'Close'}
         secondary={true}
         keyboardFocused={true}
         onTouchTap={this.props.closeAlert}
@@ -22,18 +22,18 @@ class ModalAlert extends React.Component {
 
     return (
         <Dialog
-          actions={this.props.alert.actions || actions}
-          modal={this.props.alert.modal || false}
-          title={this.props.alert.title}
-          open={this.props.alert.open}
+          actions={this.props.alert.get('actions') || actions}
+          modal={this.props.alert.get('modal') || false}
+          title={this.props.alert.get('title')}
+          open={this.props.alert.get('open')}
           onRequestClose={this.props.closeAlert}>
-          {this.props.alert.message}
+          {this.props.alert.get('message')}
         </Dialog>
     );
   }
 }
 
 export default connect(
-   state => ({alert: state.modals.alert}),
+   state => ({alert: state.getIn(['modals', 'alert'])}),
    { closeAlert }
  )(ModalAlert);

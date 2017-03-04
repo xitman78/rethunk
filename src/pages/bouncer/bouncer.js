@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import { selectBounce } from '../../actions/actionCreator'
-import bounce from '../../animations/bounce'
+import bounceList from '../../animations/bounce'
 import './bouncer.sass'
 
 
@@ -17,7 +17,7 @@ class Bouncer extends Component {
 
     let target = ev.target;
 
-    bounce[this.props.comments.bounce].applyTo(target);
+    bounceList[this.props.bounce].applyTo(target);
 
   }
 
@@ -29,7 +29,7 @@ class Bouncer extends Component {
 
     console.log('Render Home');
 
-    const { comments } = this.props.comments;
+    const bounce = this.props.bounce;
     return (
       <div>
           <h2 className="page-title">Reactive Bounces</h2>
@@ -37,9 +37,9 @@ class Bouncer extends Component {
           <SelectField
             className="works-selector"
             floatingLabelText="Bounce preset"
-            value={this.props.comments.bounce}
+            value={bounce}
             onChange={this.bounceChange.bind(this)}>
-            {Object.keys(bounce).map(preset => <MenuItem key={preset} value={preset} primaryText={bounce[preset].title} />)}
+            {Object.keys(bounceList).map(preset => <MenuItem key={preset} value={preset} primaryText={bounceList[preset].title} />)}
           </SelectField>
 
           <div className="bouncer-container">
@@ -51,6 +51,6 @@ class Bouncer extends Component {
 }
 
 export default connect(
-  state => ({ comments: state.comments }),
+  state => ({ bounce: state.getIn(['comments', 'bounce']) }),
   { selectBounce }
 )(Bouncer);

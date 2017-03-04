@@ -7,20 +7,20 @@ class MySnackbar extends Component {
 
   render() {
 
-      let { snackbar, closeSnackbar } = this.props;
+      // let { snackbar, closeSnackbar } = this.props;
 
       return (<Snackbar
-        open={ snackbar.open || false }
-        message={ snackbar.message || 'Undefined' }
-        autoHideDuration={ snackbar.duration || 4000 }
-        onRequestClose={ closeSnackbar }
+        open={ this.props.snackbar.get('open') || false }
+        message={ this.props.snackbar.get('message') || 'Undefined' }
+        autoHideDuration={ this.props.snackbar.get('duration') || 4000 }
+        onRequestClose={ this.props.closeSnackbar }
         action="close"
-        onActionTouchTap={closeSnackbar}
+        onActionTouchTap={this.props.closeSnackbar}
       />);
   }
 }
 
 export default connect(
-  state => ({snackbar: state.modals.snackbar}),
+  state => ({snackbar: state.getIn(['modals','snackbar'])}),
   { closeSnackbar }
 )(MySnackbar);

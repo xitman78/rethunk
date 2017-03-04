@@ -1,5 +1,15 @@
+import { fromJS } from 'immutable'
 
-export default function comments(state={}, action) {
+const initialState = fromJS({
+  bounce: 'jelly',
+  comments: [
+    {id: 4, count: 0},
+    {id: 5, count: 0},
+    {id: 6, count: 0}
+  ],
+});
+
+export default function comments(state = initialState, action) {
 
   switch(action.type) {
 
@@ -15,7 +25,7 @@ export default function comments(state={}, action) {
 
    case 'BOUNCE_SELECTED':
 
-    return {...state, bounce: action.bounce};
+    return state.set('bounce', action.bounce);
 
     default:
       return state;

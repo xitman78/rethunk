@@ -8,7 +8,7 @@ import './dragged.sass'
 class Dragged extends Component {
 
   componentWillMount() {
-    this.setState({x: this.props.dragged.x, y: this.props.dragged. y});
+    this.setState({x: this.props.dragged.get('x'), y: this.props.dragged.get('y')});
   }
 
   startDragging(event) {
@@ -66,6 +66,6 @@ class Dragged extends Component {
 // export default Dragged;
 
 export default connect(
-  state => ({ dragged: state.dragged }),
+  state => ({ dragged: state.get('dragged') }),
   { fireAlert, fireSnackbar, closeAlert, draggedMoved }
 )(Dragged);
