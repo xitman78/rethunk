@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Link} from 'react-router';
 import { fetchPosts } from '../../../actions/actionCreator'
 import PostInfo from '../../../components/post-info'
 

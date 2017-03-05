@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { browserHistory, Link } from 'react-router'
+import { browserHistory } from 'react-router'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
 import {List, ListItem} from 'material-ui/List'
 import Divider from 'material-ui/Divider'

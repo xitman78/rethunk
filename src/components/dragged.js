@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link} from 'react-router'
 import { fireAlert, fireSnackbar, closeAlert } from '../actions/modalsActions'
 import { draggedMoved } from '../actions/actionCreator'
 import './dragged.sass'

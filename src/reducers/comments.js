@@ -14,14 +14,15 @@ export default function comments(state = initialState, action) {
   switch(action.type) {
 
     case 'INCREMENT_COMMENT':
-      let index = state.comments.findIndex(cm => cm.id === action.id);
-      let stateCopy = {...state, comments: state.comments.slice()};
+
+      let commentsList = state.get('comments');
+      let index = commentsList.findIndex(cm => cm.get('id') === action.id);
+
       if(index !== -1) {
-        let comment = {...stateCopy.comments[index]};
-        comment.count++;
-        stateCopy.comments[index] = comment;
+        console.log('Index found');
+        return state.setIn(['comments', index, 'count'], commentsList.getIn([index, 'count']) + 1);
       }
-      return stateCopy;
+      return state;
 
    case 'BOUNCE_SELECTED':
 
