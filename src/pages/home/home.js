@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { incrementComment } from '../../actions/actionCreator'
 import DraggedField from '../../components/dragged-field'
+import { createStructuredSelector } from 'reselect';
 import './home.sass'
 
 
@@ -9,6 +10,12 @@ class Home extends Component {
 
   componentDidMount() {
     document.title = "React Magics";
+  }
+
+  shouldComponentUpdate(nextProps) {
+
+    return (this.props.comments.hashCode() !== nextProps.comments.hashCode());
+
   }
 
   render() {
@@ -38,7 +45,11 @@ class Home extends Component {
   }
 }
 
+const mapStateToProps = createStructuredSelector({
+  comments: state => state.get('comments'),
+});
+
 export default connect(
-  state => ({ comments: state.get('comments') }),
+  mapStateToProps,
   { incrementComment }
 )(Home);

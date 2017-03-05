@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
 import { fireAlert, fireSnackbar, closeAlert } from '../actions/modalsActions'
 import { draggedMoved } from '../actions/actionCreator'
 import './dragged.sass'
@@ -63,8 +64,11 @@ class Dragged extends Component {
 }
 
 // export default Dragged;
+const mapStateToProps = createStructuredSelector({
+  dragged: state => state.get('dragged')
+});
 
 export default connect(
-  state => ({ dragged: state.get('dragged') }),
+  mapStateToProps,
   { fireAlert, fireSnackbar, closeAlert, draggedMoved }
 )(Dragged);

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
 import { swappedDrop } from '../actions/worksActions'
 import Swapped from './swapped'
 import './drop-container.sass'
@@ -28,7 +29,7 @@ class DropContainer extends Component {
   render() {
       return (
         <div className="drop-container" onDragOver={this.allowDrop} onDrop={this.drop.bind(this)}>
-          {this.props.works.getIn(['swapper',this.props.dropId]) ? <Swapped pos={this.props.dropId} /> : null}
+          {this.props.swapper.get(this.props.dropId) ? <Swapped pos={this.props.dropId} /> : null}
         </div>
       );
   }
@@ -36,7 +37,11 @@ class DropContainer extends Component {
 }
 
 
+const mapStateToProps = createStructuredSelector({
+  swapper: state => state.getIn(['works', 'swapper'])
+});
+
 export default connect(
-  state => ({ works: state.get('works') }),
+  mapStateToProps,
   { swappedDrop }
 )(DropContainer);

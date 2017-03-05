@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
+import { createStructuredSelector } from 'reselect';
 import RefreshIndicator from 'material-ui/RefreshIndicator'
 import {List, ListItem} from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import { fetchPosts } from '../../actions/actionCreator'
+
 
 class Posts extends Component {
 
@@ -73,7 +75,11 @@ class Posts extends Component {
   }
 }
 
+const mapStateToProps = createStructuredSelector({
+  posts: state => state.get('posts'),
+});
+
 export default connect(
-  state => ({ posts: state.get('posts') }),
+  mapStateToProps,
   { fetchPosts }
 )(Posts);

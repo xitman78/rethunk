@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
+import { createStructuredSelector } from 'reselect'
 import { fetchWorks, currentWorkChanged, swapChild, swappedDrop } from '../../actions/worksActions'
 import { fireAlert, fireSnackbar, closeAlert } from '../../actions/modalsActions'
 import DropContainer from '../../components/drop-container'
@@ -87,8 +88,11 @@ class Works extends Component {
   }
 }
 
+const mapStateToProps = createStructuredSelector({
+  works: state => state.get('works'),
+});
 
 export default connect(
-  state => ({ works: state.get('works') }),
+  mapStateToProps,
   { fetchWorks, currentWorkChanged, fireAlert, fireSnackbar, closeAlert, swapChild, swappedDrop }
 )(Works);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import { selectBounce } from '../../actions/actionCreator'
@@ -50,7 +51,11 @@ class Bouncer extends Component {
   }
 }
 
+const mapStateToProps = createStructuredSelector({
+  bounce: state => state.getIn(['comments', 'bounce']),
+});
+
 export default connect(
-  state => ({ bounce: state.getIn(['comments', 'bounce']) }),
+  mapStateToProps,
   { selectBounce }
 )(Bouncer);
