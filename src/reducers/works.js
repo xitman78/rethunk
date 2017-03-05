@@ -28,18 +28,16 @@ export default function works(state = initialState, action) {
 
     case 'WORKS_SWAP_CHILD':
     {
-      let newSwapper = { left: state.swapper.right, right: state.swapper.left };
-
-      return {...state, swapper: newSwapper };
+      let swapper = state.get('swapper');
+      return state.set('swapper', swapper.merge({ left: swapper.get('right'), right: swapper.get('left') }));
     }
 
     case 'WORKS_SWAPPED_DROP':
       // console.log('WORKS_SWAPPED_DROP', action);
       if(action.sourse === action.target) return state;
-      let newState =  {...state};
-      newState.swapper[action.target] = newState.swapper[action.sourse];
-      delete newState.swapper[action.sourse];
-      return newState;
+      let swapper = state.get('swapper');
+      let newSwapper = swapper.set(action.target, swapper.get(action.sourse)).set(action.sourse, undefined);
+      return state.set('swapper', newSwapper);
 
     default:
       return state;

@@ -68,10 +68,10 @@ class Works extends Component {
         <RaisedButton label="Submit" primary={true} onTouchTap={this.fireSnackbar.bind(this)} style={{marginRight: '16px'}}/>
         <RaisedButton label="Swap" onTouchTap={this.props.swapChild} />
         <div className="swapper-container">
-          { /*<DropContainer dropId="left" />
+          <DropContainer dropId="left" />
           <DropContainer dropId="right" />
           <DropContainer dropId="down" />
-          <DropContainer dropId="four" />*/ }
+          <DropContainer dropId="four" />
         </div>
         <div className="work-details">
         {

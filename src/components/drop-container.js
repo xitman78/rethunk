@@ -28,7 +28,7 @@ class DropContainer extends Component {
   render() {
       return (
         <div className="drop-container" onDragOver={this.allowDrop} onDrop={this.drop.bind(this)}>
-          {this.props.works.swapper[this.props.dropId] ? <Swapped pos={this.props.dropId} /> : null}
+          {this.props.works.getIn(['swapper',this.props.dropId]) ? <Swapped pos={this.props.dropId} /> : null}
         </div>
       );
   }
