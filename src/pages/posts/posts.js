@@ -40,9 +40,12 @@ class Posts extends Component {
 
    let postsList = this.props.posts.get('posts').toJS();
 
+   let error = this.props.posts.get('error');
+
     return (
       <div>
           <h2 className="page-title">Blog</h2>
+          { error ? <div><h3>Fetch error</h3>{JSON.stringify(error)}</div> : null }
           <p style={{color: 'white'}}>These posts are fetched from <a href="https://jsonplaceholder.typicode.com" target="_blank">https://jsonplaceholder.typicode.com</a></p>
           <div style={style.container}>
              <RefreshIndicator

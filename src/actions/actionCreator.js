@@ -25,7 +25,10 @@ export function fetchPosts() {
       setTimeout(function(){
         dispatch({ type: 'POSTS_FETCHED', payload: data});
       }, 1000);
-    })
+    }).catch(err => {
+      // dispatch({type: 'MODAL_ALERT_FIRED', payload: {message: 'Cannot fetch blog posts!', title: 'Error'}});
+      dispatch({type: 'POSTS_FETCH_ERROR', error: err});
+    });
 
   };
 }

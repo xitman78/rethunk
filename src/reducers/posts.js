@@ -12,6 +12,9 @@ export default function posts(state = initialState, action) {
       return state.merge({fetching: true, posts:state.get('posts')});
     case 'POSTS_FETCHED':
       return state.merge({fetching: false, posts:action.payload});
+    case 'POSTS_FETCH_ERROR':
+      return state.merge({fetching: false, posts:[], error: action.error});
+
     default:
       return state;
   }

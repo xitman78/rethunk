@@ -10,11 +10,11 @@ function alert(state = alertInitialState, action) {
   switch(action.type) {
 
     case 'MODAL_ALERT_FIRED':
-      console.log('MODAL_ALERT_FIRED', state);
+      // console.log('MODAL_ALERT_FIRED', state);
       return state.set('open', true).merge(action.payload);
 
     case 'MODAL_ALERT_CLOSED':
-      console.log('MODAL_ALERT_FIRED', state);
+      // console.log('MODAL_ALERT_FIRED', state);
       return state.set('open', false);
 
     default:

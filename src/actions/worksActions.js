@@ -18,6 +18,7 @@ export function fetchWorks() {
       dispatch({ type: 'WORKS_FETCHED', payload: data});
     }).catch(err => {
       // console.error('Error fetching works', err);
+      // dispatch({type: 'MODAL_ALERT_FIRED', payload: {message: 'Cannot fetch works!', title: 'Error'}});
       dispatch({ type: 'WORKS_FETCH_ERROR', payload: err});
     })
 
