@@ -3,6 +3,9 @@ import './font-face.sass'
 
 export default class MainHeader extends Component {
 
+  shouldComponentUpdate(nextProps) {
+    return false; //static component
+  }
 
   render() {
 

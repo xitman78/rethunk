@@ -12,6 +12,10 @@ const nearbyIcon = <IconLocationOn />;
 
 export default class Footer extends Component {
 
+  shouldComponentUpdate(nextProps) {
+    return false; //static component
+  }
+
   render() {
 
     console.log('Render Footer');

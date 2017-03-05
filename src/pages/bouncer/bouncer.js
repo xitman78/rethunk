@@ -27,7 +27,7 @@ class Bouncer extends Component {
 
   render() {
 
-    console.log('Render Home');
+    console.log('Render Bounce');
 
     const bounce = this.props.bounce;
     return (

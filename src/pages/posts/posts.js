@@ -24,7 +24,7 @@ class Posts extends Component {
 
   render() {
 
-    console.log('Render About');
+    // console.log('Render About', this.props.posts);
 
     const style = {
       container: {
@@ -38,6 +38,8 @@ class Posts extends Component {
       },
     };
 
+   let postsList = this.props.posts.get('posts').toJS();
+
     return (
       <div>
           <h2 className="page-title">Blog</h2>
@@ -50,13 +52,13 @@ class Posts extends Component {
                 top={0}
                 loadingColor="#777777"
                 onTouchTap={this.refresh.bind(this)}
-                status={ this.props.posts.fetching ? 'loading' : 'ready' }
+                status={ this.props.posts.get('fetching') ? 'loading' : 'ready' }
                 style={style.refresh}
               />
           </div>
           <div className="page-container">
             <List>
-              {this.props.posts.posts.map(post => <div key={post.id}><ListItem
+              {postsList.map(post => <div key={post.id}><ListItem
                   primaryText={post.title}
                   secondaryText={post.body}
                   onTouchTap={this.showPost.bind(this, post.id)}
@@ -69,6 +71,6 @@ class Posts extends Component {
 }
 
 export default connect(
-  state => ({ posts: state.posts}),
+  state => ({ posts: state.get('posts') }),
   { fetchPosts }
 )(Posts);

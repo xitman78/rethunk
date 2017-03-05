@@ -10,7 +10,7 @@ class PostDetails extends Component {
     console.log(this.props.params.id);
 
     let postId = this.props.params.id;
-    let post = this.props.posts.posts.find(p => p.id == postId);
+    let post = this.props.posts.find(p => p.id == postId);
 
     if(!post) this.props.fetchPosts();
 
@@ -20,7 +20,7 @@ class PostDetails extends Component {
   render() {
 
     let postId = this.props.params.id;
-    let post = this.props.posts.posts.find(p => p.id == postId);
+    let post = this.props.posts.find(p => p.id == postId);
 
     return (
       <div className="child-container">
@@ -33,6 +33,6 @@ class PostDetails extends Component {
 }
 
 export default connect(
-  state => ({ posts: state.posts }),
+  state => ({ posts: state.getIn(['posts', 'posts']).toJS() }),
   { fetchPosts }
 )(PostDetails);
