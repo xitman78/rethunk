@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { incrementComment } from '../../actions/actionCreator'
 import DraggedField from '../../components/dragged-field'
 import { createStructuredSelector } from 'reselect';
+import Dragged from '../../components/dragged'
 import './home.sass'
 
 
@@ -38,7 +39,9 @@ class Home extends Component {
           }
           </ul>
           <div className="dragged-field-container">
-            <DraggedField />
+            <DraggedField>
+              <Dragged />
+            </DraggedField>
           </div>
       </div>
     );
