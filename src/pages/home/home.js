@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+import Helmet from 'react-helmet'
+
 import { incrementComment } from '../../actions/actionCreator'
 import DraggedField from '../../components/dragged-field'
-import { createStructuredSelector } from 'reselect';
 import Dragged from '../../components/dragged'
 import './home.sass'
 
 
 class Home extends Component {
-
-  componentDidMount() {
-    document.title = "React Magics";
-  }
 
   shouldComponentUpdate(nextProps) {
 
@@ -26,6 +24,7 @@ class Home extends Component {
     const comments = this.props.comments.get('comments').toJS();
     return (
       <div>
+          <Helmet title="React Magics" />
           <h2 className="page-title">Welcome home</h2>
 
           <ul style={{listStyleType: 'none'}}>

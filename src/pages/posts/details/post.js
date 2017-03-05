@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import Helmet from 'react-helmet'
+
 import { fetchPosts } from '../../../actions/actionCreator'
 import PostInfo from '../../../components/post-info'
 
@@ -23,6 +25,7 @@ class PostDetails extends Component {
 
     return (
       <div className="child-container">
+        <Helmet title={post && post.title ? post.title : "Post details" } />
         <h2 className="page-title">Post Details</h2>
           <PostInfo {...post} />
       </div>

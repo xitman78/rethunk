@@ -3,16 +3,14 @@ import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
+import Helmet from 'react-helmet'
+
 import { selectBounce } from '../../actions/actionCreator'
 import bounceList from '../../animations/bounce'
 import './bouncer.sass'
 
 
 class Bouncer extends Component {
-
-  componentDidMount() {
-    document.title = "Bounce :: React Magics";
-  }
 
   startBounce(ev) {
 
@@ -33,6 +31,8 @@ class Bouncer extends Component {
     const bounce = this.props.bounce;
     return (
       <div>
+          <Helmet title="Bounce :: React Magics"/>
+          
           <h2 className="page-title">Reactive Bounces</h2>
 
           <SelectField

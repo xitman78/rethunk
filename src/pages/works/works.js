@@ -4,6 +4,8 @@ import RaisedButton from 'material-ui/RaisedButton'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import { createStructuredSelector } from 'reselect'
+import Helmet from 'react-helmet'
+
 import { fetchWorks, currentWorkChanged, swapChild, swappedDrop } from '../../actions/worksActions'
 import { fireAlert, fireSnackbar, closeAlert } from '../../actions/modalsActions'
 import DropContainer from '../../components/drop-container'
@@ -25,7 +27,6 @@ class Works extends Component {
 
 
   componentDidMount() {
-    document.title = "Works :: React Magics";
     this.props.fetchWorks();
   }
 
@@ -54,6 +55,7 @@ class Works extends Component {
 
     return (
       <div>
+        <Helmet title="Works :: React Magics" />
         <h2 className="page-title">Works</h2>
         <div>
           <SelectField

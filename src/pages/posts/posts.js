@@ -5,13 +5,14 @@ import { createStructuredSelector } from 'reselect';
 import RefreshIndicator from 'material-ui/RefreshIndicator'
 import {List, ListItem} from 'material-ui/List'
 import Divider from 'material-ui/Divider'
+import Helmet from 'react-helmet'
+
 import { fetchPosts } from '../../actions/actionCreator'
 
 
 class Posts extends Component {
 
   componentDidMount() {
-    document.title = "Posts :: React Magics";
     this.props.fetchPosts();
   }
 
@@ -46,6 +47,7 @@ class Posts extends Component {
 
     return (
       <div>
+          <Helmet title="Posts :: React Magics" />
           <h2 className="page-title">Blog</h2>
           { error ? <div><h3>Fetch error</h3>{JSON.stringify(error)}</div> : null }
           <p style={{color: 'white'}}>These posts are fetched from <a href="https://jsonplaceholder.typicode.com" target="_blank">https://jsonplaceholder.typicode.com</a></p>
