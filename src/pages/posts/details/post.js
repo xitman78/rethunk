@@ -8,7 +8,7 @@ import PostInfo from '../../../components/post-info'
 class PostDetails extends Component {
 
   componentDidMount() {
-    console.log(this.props.params.id);
+    // console.log(this.props.params.id);
 
     let postId = this.props.params.id;
     let post = this.props.posts.find(p => p.id == postId);
