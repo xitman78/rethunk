@@ -14,6 +14,14 @@ export function selectBounce(bounce) {
   }
 }
 
+export function colorChecked(color, isChecked) {
+  return {
+    type: 'CHECKED_COLOR',
+    color,
+    isChecked
+  };
+}
+
 export function fetchPosts() {
   return (dispatch) => {
 

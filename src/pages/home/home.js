@@ -2,18 +2,55 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import Helmet from 'react-helmet'
+import RaisedButton from 'material-ui/RaisedButton';
+import Popover from 'material-ui/Popover';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
+import Checkbox from 'material-ui/Checkbox';
 
-import { incrementComment } from '../../actions/actionCreator'
+import { incrementComment, colorChecked } from '../../actions/actionCreator'
 import DraggedField from '../../components/dragged-field'
 import Dragged from '../../components/dragged'
 import './home.sass'
 
+const checkStyle = {marginBottom: 16, marginLeft: 16, marginRight: 22};
+
 
 class Home extends Component {
 
-  shouldComponentUpdate(nextProps) {
+  constructor(props) {
+    super(props);
 
-    return (this.props.comments.hashCode() !== nextProps.comments.hashCode());
+    this.state = {
+      open: false,
+    };
+  }
+
+  // shouldComponentUpdate(nextProps) {
+  //
+  //   return (this.props.comments.hashCode() !== nextProps.comments.hashCode());
+  //
+  // }
+
+  handleTouchTap = (event) => {
+    // This prevents ghost click.
+    event.preventDefault();
+
+    this.setState({
+      open: true,
+      anchorEl: event.currentTarget,
+    });
+  };
+
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
+
+  onCheck(prop, ev, isChecked) {
+
+    this.props.colorChecked(prop, isChecked);
 
   }
 
@@ -37,6 +74,46 @@ class Home extends Component {
             })
           }
           </ul>
+          <RaisedButton
+          onTouchTap={this.handleTouchTap.bind(this)}
+          label="Click me"
+        />
+
+        <Popover
+          open={this.state.open}
+          anchorEl={this.state.anchorEl}
+          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+          targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          onRequestClose={this.handleRequestClose.bind(this)}
+        >
+          <Menu>
+            <div><Checkbox
+              label="Red"
+              checked={this.props.colors.red}
+              onCheck={this.onCheck.bind(this, 'red')}
+              style={checkStyle}
+            /></div>
+            <div><Checkbox
+              label="Green"
+              checked={this.props.colors.green}
+              onCheck={this.onCheck.bind(this, 'green')}
+              style={checkStyle}
+            /></div>
+            <div><Checkbox
+              label="Orange"
+              checked={this.props.colors.orange}
+              onCheck={this.onCheck.bind(this, 'orange')}
+              style={checkStyle}
+            /></div>
+            <div><Checkbox
+              label="Yellow"
+              checked={this.props.colors.yellow}
+              onCheck={this.onCheck.bind(this, 'yellow')}
+              style={checkStyle}
+            /></div>
+          </Menu>
+        </Popover>
+
           <div className="dragged-field-container">
             <DraggedField>
               <Dragged />
@@ -49,9 +126,10 @@ class Home extends Component {
 
 const mapStateToProps = createStructuredSelector({
   comments: state => state.get('comments'),
+  colors: state => state.getIn(['comments', 'checked']).toJS(),
 });
 
 export default connect(
   mapStateToProps,
-  { incrementComment }
+  { incrementComment, colorChecked }
 )(Home);

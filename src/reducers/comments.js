@@ -7,6 +7,12 @@ const initialState = fromJS({
     {id: 5, count: 0},
     {id: 6, count: 0}
   ],
+  checked: {
+    red: false,
+    green: false,
+    orange: false,
+    yellow: false,
+  }
 });
 
 export default function comments(state = initialState, action) {
@@ -27,6 +33,10 @@ export default function comments(state = initialState, action) {
    case 'BOUNCE_SELECTED':
 
     return state.set('bounce', action.bounce);
+
+  case 'CHECKED_COLOR':
+
+    return state.setIn(['checked', action.color ], action.isChecked);
 
     default:
       return state;
