@@ -9,6 +9,8 @@ import Helmet from 'react-helmet'
 
 import { fetchPosts } from '../../actions/actionCreator'
 
+import ReForm from '../../components/reform/reform'
+
 
 class Posts extends Component {
 
@@ -23,6 +25,12 @@ class Posts extends Component {
 
   showPost(postId) {
     browserHistory.push('/post/' + postId);
+  }
+
+  handleSubmitForm(values) {
+    console.log('values', values);
+    // ev.preventDefault();
+    // console.log('Form Submitted', arguments);
   }
 
   render() {
@@ -49,6 +57,7 @@ class Posts extends Component {
       <div>
           <Helmet title="Posts :: React Magics" />
           <h2 className="page-title">Blog</h2>
+          <ReForm onSubmit={this.handleSubmitForm.bind(this)} />
           { error ? <div><h3>Fetch error</h3>{JSON.stringify(error)}</div> : null }
           <p style={{color: 'white'}}>These posts are fetched from <a href="https://jsonplaceholder.typicode.com" target="_blank">https://jsonplaceholder.typicode.com</a></p>
           <div style={style.container}>

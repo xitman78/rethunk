@@ -2,6 +2,7 @@ import { combineReducers } from 'redux-immutable'
 import { routerReducer } from 'react-router-redux'
 import { LOCATION_CHANGE } from 'react-router-redux'
 import { fromJS } from 'immutable'
+import { reducer as reducerForm } from 'redux-form/immutable'
 
 import works from './works'
 import comments from './comments'
@@ -33,6 +34,7 @@ const rootReducer = combineReducers(
     posts: posts,
     routing: routerReducer,
     dragged: dragged,
+    forms: reducerForm,
   }
 );
 
