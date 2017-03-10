@@ -4,7 +4,9 @@ import { browserHistory, Link } from 'react-router'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
 import {List, ListItem} from 'material-ui/List'
 import Divider from 'material-ui/Divider'
+
 import { fetchPosts } from '../../actions/actionCreator'
+import ReForm from '../../components/reform'
 
 class Posts extends Component {
 
@@ -20,6 +22,11 @@ class Posts extends Component {
 
   showPost(postId) {
     browserHistory.push('/post/' + postId);
+  }
+
+  handleSubmit(values) {
+    // Do something with the form values
+    console.log(values);
   }
 
   render() {
@@ -41,6 +48,7 @@ class Posts extends Component {
     return (
       <div>
           <h2 className="page-title">Blog</h2>
+          <ReForm onSubmit={this.handleSubmit} />
           <p style={{color: 'white'}}>These posts are fetched from <a href="https://jsonplaceholder.typicode.com" target="_blank">https://jsonplaceholder.typicode.com</a></p>
           <div style={style.container}>
              <RefreshIndicator
