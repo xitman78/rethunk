@@ -34,7 +34,7 @@ const rootReducer = combineReducers(
     posts: posts,
     routing: routerReducer,
     dragged: dragged,
-    forms: reducerForm,
+    form: reducerForm,
   }
 );
 

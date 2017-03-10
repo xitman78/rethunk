@@ -1,4 +1,4 @@
-const validate = values => {
+function validate(values) {
   // IMPORTANT: values is an Immutable.Map here!
   console.log('Validator', values);
   const errors = {}
