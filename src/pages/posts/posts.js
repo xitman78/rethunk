@@ -57,7 +57,7 @@ class Posts extends Component {
       <div>
           <Helmet title="Posts :: React Magics" />
           <h2 className="page-title">Blog</h2>
-          <ReForm onSubmit={this.handleSubmitForm.bind(this)} />
+          <ReForm onSubmit={this.handleSubmitForm.bind(this)} initialValues={{username: 'test', email: '1@2.com', age: '18'}} />
           { error ? <div><h3>Fetch error</h3>{JSON.stringify(error)}</div> : null }
           <p style={{color: 'white'}}>These posts are fetched from <a href="https://jsonplaceholder.typicode.com" target="_blank">https://jsonplaceholder.typicode.com</a></p>
           <div style={style.container}>
